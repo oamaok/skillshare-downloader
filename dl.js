@@ -5,8 +5,8 @@ const request = require("request-promise-native");
 const skillshareUrl = "https://www.skillshare.com";
 
 const sessionCookie = request.cookie(`PHPSESSID=${process.argv[2]}`);
-const classUrl = process.argv[3];
-const basePath = path.resolve(process.argv[4] || __dirname);
+const basePath = path.resolve(process.argv[3]);
+const classUrl = process.argv[4];
 const jar = request.jar();
 
 jar.setCookie(skillshareUrl, sessionCookie);
@@ -50,6 +50,8 @@ function download(url, file) {
 }
 
 (async () => {
+  console.log("Base path:", basePath);
+
   console.log("Fetching base content...");
   const skillshareResponse = await request(classUrl, { jar });
   console.log("Fetching policy key...");
@@ -65,7 +67,7 @@ function download(url, file) {
   const { sessions } = skillshare.pageData.videoPlayerData.units[0];
   const { classTitle } = shareLinks;
 
-  const folderName = cleanName(classTitle);
+  const folderName = path.resolve(basePath, cleanName(classTitle));
 
   if (!fs.existsSync(folderName)) fs.mkdirSync(folderName);
 

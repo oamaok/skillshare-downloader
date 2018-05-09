@@ -5,5 +5,5 @@
 npm install
 
 # usage
-node dl {value of PHPSESSID} {class url} {download directory}
+node dl {value of PHPSESSID} {download directory} {class url}
 ```
