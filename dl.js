@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const req = require("request");
 const request = require("request-promise-native");
 const skillshareUrl = "https://www.skillshare.com";
 
@@ -43,7 +42,7 @@ async function getPolicyKey(skillshareResponse) {
 
 function download(url, file) {
   return new Promise((resolve, reject) => {
-    req(url)
+    request(url)
       .pipe(fs.createWriteStream(file))
       .on("finish", resolve);
   });
