@@ -8,7 +8,7 @@ const basePath = path.resolve(process.argv[3]);
 const classUrl = process.argv[4];
 const jar = request.jar();
 
-jar.setCookie(skillshareUrl, sessionCookie);
+jar.setCookie(sessionCookie, skillshareUrl);
 
 const cleanName = name =>
   name
