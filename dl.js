@@ -10,7 +10,7 @@ const jar = request.jar();
 
 jar.setCookie(sessionCookie, skillshareUrl);
 
-const cleanName = name => 
+const cleanName = name =>
   name
     .toString()
     .toLowerCase()
