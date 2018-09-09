@@ -10,17 +10,13 @@ const jar = request.jar();
 
 jar.setCookie(sessionCookie, skillshareUrl);
 
-const cleanName = name => {
-  if (typeof name === 'number') {
-    return name;
-  } else {
-    return name
+const cleanName = name => 
+  name
+    .toString()
     .toLowerCase()
     .replace(/[^a-z0-9]+/gi, " ")
     .trim()
     .replace(/ /gi, "_");
-  }
-}
 
 async function getVideoInfo(accountId, policyKey, session) {
   const match = session.video_mid_thumbnail_url.match(/\/thumbnails\/(\d+)\//);
