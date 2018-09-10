@@ -12,6 +12,7 @@ jar.setCookie(sessionCookie, skillshareUrl);
 
 const cleanName = name =>
   name
+    .toString()
     .toLowerCase()
     .replace(/[^a-z0-9]+/gi, " ")
     .trim()
